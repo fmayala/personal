@@ -1,5 +1,4 @@
-/*var animLinks = document.querySelectorAll('.anim');
-
+var animLinks = document.querySelectorAll('.anim');
 
 // Home
 animLinks[0].addEventListener('click', (e) => {
@@ -79,4 +78,4 @@ function onMouseMove(e) {
     x: e.pageX - 5,
     y: e.pageY - 7
   })
-}*/
+}
