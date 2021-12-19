@@ -1,25 +1,37 @@
 nextParticle = new NextParticle({
     image: document.all.logo,
-    width : window.innerWidth - document.getElementById('boundinginfo').offsetWidth - 200,
-    height : window.innerHeight + 100,
+    width : window.innerWidth > 639 ? 1100 : window.innerWidth + 400,
+    height : window.innerWidth > 639 ? window.innerHeight + 100: window.innerHeight,
     particleGap: 2,
     initPosition: 'none',
     initDirection: 'none',
-    maxWidth: 1000,
-    maxHeight: 1000,
-    //renderer: "webgl"
+    maxWidth: window.innerWidth > 639 ? 2000 : 2000,
+    maxHeight: window.innerWidth > 639 ? 2000 : 2000,
+    imageWidth: 2000,
+    imageHeight: 2000
 });
 
 window.onresize = function () {
-    if (window.innerWidth > 600) {
-        nextParticle.width = window.innerWidth - document.getElementById('boundinginfo').offsetWidth - 200;
+    if (window.innerWidth > 639) {
+        nextParticle.maxHeight = 2000
+        nextParticle.maxWidth = 2000
+
+        nextParticle.imageHeight = 1200
+        nextParticle.imageWidth = 1200
+
+        nextParticle.width = 1100
         nextParticle.height = window.innerHeight + 100;
+
         nextParticle.start();
     }
 
-    if (window.innerWidth < 600) {
-        nextParticle.width = window.innerWidth;
+    if (window.innerWidth < 640) {
+        nextParticle.width = window.innerWidth + 400;
         nextParticle.height = window.innerHeight;
+
+        nextParticle.maxHeight = 2000
+        nextParticle.maxWidth = 2000
+
         nextParticle.start();
     }
 
@@ -127,6 +139,7 @@ function fadeInEffect(fadeTarget, updateInterval, increment) {
 
 
 var hambar = document.getElementById('nav-icon4')
+var mNavOpen = false;
 
 hambar.addEventListener('click', () => {
     if (hambar.classList.contains('open')) {
@@ -134,4 +147,14 @@ hambar.addEventListener('click', () => {
     } else {
         hambar.classList.add('open')
     }
+
+    mNavOpen = !mNavOpen;
+
+    if (mNavOpen) {
+        document.getElementById('mobileNav').style.display = 'flex';
+    } else {
+        document.getElementById('mobileNav').style.display = 'none';
+    }
+
+
 })
