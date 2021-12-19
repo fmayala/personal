@@ -1,34 +1,47 @@
 nextParticle = new NextParticle({
     image: document.all.logo,
-    width: window.innerWidth,
-    height: window.innerHeight,
-    maxWidth: window.innerWidth * .8,
+    width : window.innerWidth - document.getElementById('boundinginfo').offsetWidth - 200,
+    height : window.innerHeight + 100,
     particleGap: 2,
     initPosition: 'none',
     initDirection: 'none',
+    maxWidth: 1000,
+    maxHeight: 1000,
+    //renderer: "webgl"
 });
 
 window.onresize = function () {
     if (window.innerWidth > 600) {
-        nextParticle.width = window.innerWidth - 20;
-        nextParticle.height = window.innerHeight - 20;
+        nextParticle.width = window.innerWidth - document.getElementById('boundinginfo').offsetWidth - 200;
+        nextParticle.height = window.innerHeight + 100;
         nextParticle.start();
     }
 
     if (window.innerWidth < 600) {
         nextParticle.width = window.innerWidth;
         nextParticle.height = window.innerHeight;
-        //nextParticle.imageHeight = window.innerHeight + 200;
-        //nextParticle.imageWidth = window.innerWidth + 400;
-        nextParticle.maxWidth = window.innerWidth * 2;
         nextParticle.start();
+    }
+
+    if (window.innerHeight < 800) {
+        document.getElementById('infoWrapper').classList.add('h-screen');
+    } else {
+        document.getElementById('infoWrapper').classList.remove('h-screen');
     }
 };
 
 window.nextParticle = nextParticle;
 
 window.onload = () => {
+    nextParticle.start();
     window.canvas = nextParticle.canvas;
+    canvas.style.overflow = "hidden";
+
+    if (window.innerHeight < 800) {
+        document.getElementById('infoWrapper').classList.add('h-screen');
+    } else {
+        document.getElementById('infoWrapper').classList.remove('h-screen');
+    }
 }
 
 var currentOpacity = 0

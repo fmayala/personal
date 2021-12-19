@@ -4,8 +4,10 @@ var animLinks = document.querySelectorAll('.anim');
 animLinks[0].addEventListener('click', (e) => {
     e.preventDefault();
 
-    // Reset pointer events so that face is interactable again.
-    document.querySelector('.wrapper').classList.add('pointer-events-none');
+    // Change z-indices
+    document.getElementById('infoBox').style.zIndex = '10'
+    document.getElementById('meWrapper').style.zIndex = '20'
+
     // Bring image back
     fadeInEffect(canvas, 100, .1);
 
@@ -22,6 +24,10 @@ animLinks[1].addEventListener('click', (e) => {
     fadeOutEffect(canvas, 100, 0.1);
 
     fadeInEffect(document.getElementById('infoBox'), 20, .05);
+
+    // Change z-indices
+    document.getElementById('infoBox').style.zIndex = '20'
+    document.getElementById('meWrapper').style.zIndex = '10'
 
     document.getElementById('titleNav').textContent = "== portfolio"
 
