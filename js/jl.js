@@ -120,7 +120,9 @@ function fadeInEffect(fadeTarget, updateInterval, increment) {
         }, updateInterval);
     } else {
         var fadeInEffectInt = setInterval(function () {
-            document.getElementById('infoBox').style.display = 'block';
+
+            if (fadeTarget == document.getElementById('infoBox'))
+                document.getElementById('infoBox').style.display = 'block';
 
             if (fadeTarget.style.opacity < 1) {
                 if (currentOpacity != 1)
@@ -148,13 +150,16 @@ hambar.addEventListener('click', () => {
         hambar.classList.add('open')
     }
 
+    fadeOutEffect(document.getElementById('boundinginfo'), 20, .05);
+    fadeOutEffect(document.getElementById('infoBox'), 20, .05);
+
     mNavOpen = !mNavOpen;
 
-    if (mNavOpen) {
+    /*if (mNavOpen) {
         document.getElementById('mobileNav').style.display = 'flex';
     } else {
         document.getElementById('mobileNav').style.display = 'none';
-    }
+    }*/
 
 
 })
