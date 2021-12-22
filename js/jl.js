@@ -92,7 +92,9 @@ function fadeOutEffect(fadeTarget, updateInterval, decrement) {
                 fadeTarget.style.opacity -= decrement;
             } else {
                 clearInterval(fadeOutEffectInt);
-                document.getElementById('infoBox').style.display = 'none';
+
+                if (fadeTarget == document.getElementById('infoBox'))
+                    document.getElementById('infoBox').style.display = 'none';
             }
 
         }, updateInterval);
@@ -141,25 +143,50 @@ function fadeInEffect(fadeTarget, updateInterval, increment) {
 
 
 var hambar = document.getElementById('nav-icon4')
-var mNavOpen = false;
 
 hambar.addEventListener('click', () => {
     if (hambar.classList.contains('open')) {
         hambar.classList.remove('open')
+
+        switch (location.hash) {
+            case "home":
+                // Show home
+                document.getElementById('boundinginfo').style.display = 'block';
+
+                // Hide all other pages
+                document.getElementById('infoBox').style.display = 'none';
+                break;
+            case "portfolio":
+                // Show home
+                document.getElementById('boundinginfo').style.display = 'block';
+
+                // Hide all other pages
+                document.getElementById('infoBox').style.display = 'none';
+                break;
+            case "resume":
+                // Show home
+                document.getElementById('boundinginfo').style.display = 'block';
+
+                // Hide all other pages
+                document.getElementById('infoBox').style.display = 'none';
+                break;
+            case "contact":
+                // Show home
+                document.getElementById('boundinginfo').style.display = 'block';
+
+                // Hide all other pages
+                document.getElementById('infoBox').style.display = 'none';
+                break;
+            case "about":
+                // Show home
+                document.getElementById('boundinginfo').style.display = 'block';
+
+                // Hide all other pages
+                document.getElementById('infoBox').style.display = 'none';
+                break;
+        }
+
     } else {
         hambar.classList.add('open')
     }
-
-    fadeOutEffect(document.getElementById('boundinginfo'), 20, .05);
-    fadeOutEffect(document.getElementById('infoBox'), 20, .05);
-
-    mNavOpen = !mNavOpen;
-
-    /*if (mNavOpen) {
-        document.getElementById('mobileNav').style.display = 'flex';
-    } else {
-        document.getElementById('mobileNav').style.display = 'none';
-    }*/
-
-
 })
